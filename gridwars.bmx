@@ -9,6 +9,9 @@ Framework BRL.GLMax2D
 'Framework BRL.D3D7Max2D
 Framework BRL.GLMax2D
 ?Linux
+?OpenGLES
+Framework SDL.GL2SDLMax2D
+?not OpenGLES
 Framework BRL.GLMax2D
 ?
 

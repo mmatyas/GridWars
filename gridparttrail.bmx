@@ -282,7 +282,9 @@ Function SetUp:Int()
 
 		capturedimg:TImage = CreateImage(SCREENW,SCREENH)
 		SetLineWidth 2
+?not opengles
 		glEnable GL_LINE_SMOOTH; glHint GL_LINE_SMOOTH, GL_NICEST
+?
 
 		CreateStars()
 	EndIf
@@ -745,21 +747,25 @@ Function DrawGrid(style:Int,small:Int = False)
                SetAlpha .9
                For a = gwlow+boldw To gwhi-GRIDHILIGHT Step GRIDHILIGHT
                        'DrawLine grid[a,b].x-gxoff, grid[a,b].y-gyoff, grid[a,b+GRIDHILIGHT].x-gxoff, grid[a,b+GRIDHILIGHT].y-gyoff
+?not opengles
                        glBegin GL_LINE_STRIP
                        For b = ghlow+boldh-GRIDHILIGHT To ghhi-GRIDHILIGHT Step GRIDHILIGHT
                                glVertex3f(grid[a,b].x-gxoff, grid[a,b].y-gyoff,     0)
                                glVertex3f(grid[a,b+GRIDHILIGHT].x-gxoff,   grid[a,b+GRIDHILIGHT].y-gyoff,   0)
                        Next
                        glEnd
+?
                Next
                For b = ghlow+boldh To ghhi-GRIDHILIGHT Step GRIDHILIGHT
                        '       DrawLine grid[a,b].x-gxoff, grid[a,b].y-gyoff, grid[a+GRIDHILIGHT,b].x-gxoff, grid[a+GRIDHILIGHT,b].y-gyoff
+?not opengles
                        glBegin GL_LINE_STRIP
                        For a = gwlow+boldw-GRIDHILIGHT To gwhi-GRIDHILIGHT Step GRIDHILIGHT
                                glVertex3f(grid[a,b].x-gxoff,     grid[a,b].y-gyoff,     0)
                                glVertex3f(grid[a+GRIDHILIGHT,b].x-gxoff,   grid[a+GRIDHILIGHT,b].y-gyoff,   0)
                        Next
                        glEnd
+?
                Next
        End Function
 
@@ -886,6 +892,7 @@ Function DrawGrid(style:Int,small:Int = False)
 
 		SetScale 1,1
 		SetLineWidth 1
+?not opengles
 		For a = gwlow To gwhi - 1
 			If (a+boldh) Mod GRIDHILIGHT = 0
 				SetAlpha alpha+.25
@@ -929,6 +936,7 @@ Function DrawGrid(style:Int,small:Int = False)
 '			Next
 '			glEnd
 '		Next
+?
 	End Function
 
        Function DrawGridLines3b()
@@ -939,6 +947,7 @@ Function DrawGrid(style:Int,small:Int = False)
                boldw = GRIDHILIGHT-(gwlow Mod GRIDHILIGHT)
                boldh = GRIDHILIGHT-(ghlow Mod GRIDHILIGHT)
 
+?not opengles
                ' draw grid
                SetScale 1,1
                SetLineWidth 16'glLineWidth(i)
@@ -951,6 +960,7 @@ Function DrawGrid(style:Int,small:Int = False)
                        Next
                        glEnd
                Next
+?
        End Function
 
 
@@ -976,6 +986,7 @@ Function DrawGrid(style:Int,small:Int = False)
                Local bor:Float=1.0
                Local anz:Int=ymax*.5-1,i:Int=0,x:Int=0,y:Int=0
 
+?not opengles
                sinAkt=moiAkt2
                SetLineWidth 2'1.5'glLineWidth(2)
                glBegin GL_LINE_STRIP
@@ -1047,9 +1058,11 @@ Function DrawGrid(style:Int,small:Int = False)
                Next
                'ymin:+1
                glEnd
+?
 
 'green
 
+?not opengles
                xmax=gwhi-1;xmin=gwlow+1
                ymax=ghhi-1;ymin=ghlow+1
                sinAkt=moiAkt2
@@ -1105,9 +1118,11 @@ Function DrawGrid(style:Int,small:Int = False)
                Next
                'ymin:+1
                glEnd
+?
 
 'blue
 
+?not opengles
                xmax=gwhi-1;xmin=gwlow+1
                ymax=ghhi-1;ymin=ghlow+1
                sinAkt=moiAkt2
@@ -1169,6 +1184,7 @@ Function DrawGrid(style:Int,small:Int = False)
                Next
                'ymin:+1
                glEnd
+?
        End Function
 
 
@@ -1463,7 +1479,7 @@ Function DrawGrid(style:Int,small:Int = False)
                                        colB=Sin(delX)
                                End If
                                SetLineWidth(1+colB*1.0)
-
+?not opengles
                                glBegin GL_LINE_LOOP
                                        glColor3f(.005,.05,.3)
                                        'glColor3f(.3,.1,.05)
@@ -1479,7 +1495,7 @@ Function DrawGrid(style:Int,small:Int = False)
                                        glVertex2f(xy[0],xy[1])
                                        glVertex2f(xy[4],xy[5])
                                glEnd
-
+?
                        Next
                Next
 
@@ -1508,6 +1524,7 @@ Function DrawGrid(style:Int,small:Int = False)
 
 '		SetAlpha 1
 '		SetColor rgbR,rgbG,rgbB
+?not opengles
 		glLineWidth(2)
 		'horizontal
 		For b = ghlow+boldh-2 To ghhi-1 Step 1
@@ -1581,6 +1598,7 @@ Function DrawGrid(style:Int,small:Int = False)
 			Next
 			glEnd
 		Next
+?
 	End Function
 
 
@@ -1619,6 +1637,7 @@ Function DrawGrid(style:Int,small:Int = False)
                                xy[5] = grid[a+1,b+1].y-gyoff
 
                                sca=.5+.25*Sin(sinAkt*a*b)
+?not opengles
                                glBegin GL_TRIANGLES
                                        glColor3f(.3,.3,.3)
                                        glVertex2f(xy[2],xy[5]+(xy[3]-xy[5])*sca)
@@ -1627,7 +1646,7 @@ Function DrawGrid(style:Int,small:Int = False)
                                        glColor3f(.3,0,0)
                                        glVertex2f(xy[4]+(xy[6]-xy[4])*sca,xy[7])
                                glEnd
-
+?
                        Next
                Next
 
