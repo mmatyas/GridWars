@@ -83,14 +83,14 @@ Global shieldwarningsnd:TSound = Null
 
 Function LoadSounds()
 	Local folder$
-	
+
 	Select soundset
 		Case 1
 			folder$ = "sounds/user/"
 		Default
 			folder$ = "sounds/"
 	End Select
-	
+
 	nme_born_snd:TSound = Null
 	nme1_born_snd:TSound = Null
 	nme2_born_snd:TSound = Null
@@ -145,63 +145,63 @@ Function LoadSounds()
 	quarkhitsound:TSound = Null
 	quarkhit2sound:TSound = Null
 	shieldwarningsnd:TSound = Null
-		
-	' snds
-	nme_born_snd:TSound = LoadSound(folder$+"buzz3.wav")			' 
-	nme1_born_snd:TSound = LoadSound(folder$+"pop2.wav")			' 
-	nme2_born_snd:TSound = LoadSound(folder$+"pop3.wav")			' 
-	nme3_born_snd:TSound = LoadSound(folder$+"snake1.wav")			' 
-	nme4_born_snd:TSound = LoadSound(folder$+"gruntborn.wav")			' 
 
-	nme5_born_snd:TSound = LoadSound(folder$+"sun1.wav")			' 
-	nme5_loop_snd:TSound = LoadSound(folder$+"bondloop.wav",True)			' 
-	nme5_shrink_snd:TSound = LoadSound(folder$+"sunhit1.wav")			' 
-	nme5_grow_snd:TSound = LoadSound(folder$+"sizzle1.wav")		' 
-	nme5_explode_snd:TSound = LoadSound(folder$+"sunexp.wav")			' 
-	nme5_killed_snd:TSound = LoadSound(folder$+"Explo1.wav")			' 
+	' snds
+	nme_born_snd:TSound = LoadSound(folder$+"buzz3.wav")			'
+	nme1_born_snd:TSound = LoadSound(folder$+"pop2.wav")			'
+	nme2_born_snd:TSound = LoadSound(folder$+"pop3.wav")			'
+	nme3_born_snd:TSound = LoadSound(folder$+"snake1.wav")			'
+	nme4_born_snd:TSound = LoadSound(folder$+"gruntborn.wav")			'
+
+	nme5_born_snd:TSound = LoadSound(folder$+"sun1.wav")			'
+	nme5_loop_snd:TSound = LoadSound(folder$+"bondloop.wav",True)			'
+	nme5_shrink_snd:TSound = LoadSound(folder$+"sunhit1.wav")			'
+	nme5_grow_snd:TSound = LoadSound(folder$+"sizzle1.wav")		'
+	nme5_explode_snd:TSound = LoadSound(folder$+"sunexp.wav")			'
+	nme5_killed_snd:TSound = LoadSound(folder$+"Explo1.wav")			'
 
 	nme6_born_snd:TSound = LoadSound(folder$+"wee.wav")
 	nme6_tailexplode_snd:TSound = LoadSound(folder$+"snakehit.wav")
 	nme6_tailhit_snd:TSound = LoadSound(folder$+"tailhit.wav")
 
-	nme7_born_snd:TSound = LoadSound(folder$+"warn1.wav")			' 
-	nme7_shield_snd:TSound = LoadSound(folder$+"shield1.wav")			' 
+	nme7_born_snd:TSound = LoadSound(folder$+"warn1.wav")			'
+	nme7_shield_snd:TSound = LoadSound(folder$+"shield1.wav")			'
 
-	nme8_born_snd:TSound = LoadSound(folder$+"butterfly.wav")			' 
+	nme8_born_snd:TSound = LoadSound(folder$+"butterfly.wav")			'
 
-	ge_born_snd:TSound = LoadSound(folder$+"cat.wav")			' 
-	ge_hit_snd:TSound = LoadSound(folder$+"genhit1.wav")		
+	ge_born_snd:TSound = LoadSound(folder$+"cat.wav")			'
+	ge_hit_snd:TSound = LoadSound(folder$+"genhit1.wav")
 	ge_killed_snd:TSound = LoadSound(folder$+"genkilled1.wav")		'
 
-	le_born_snd:TSound = LoadSound(folder$+"buzz1.wav")			' 
-	le_hit_snd:TSound = LoadSound(folder$+"echo1.wav")			
+	le_born_snd:TSound = LoadSound(folder$+"buzz1.wav")			'
+	le_hit_snd:TSound = LoadSound(folder$+"echo1.wav")
 	le_killed_snd:TSound = LoadSound(folder$+"elastic.wav")		'
 
-	pu_collect_snd:TSound = LoadSound(folder$+"bonus1.wav")		' 
+	pu_collect_snd:TSound = LoadSound(folder$+"bonus1.wav")		'
 
-	get_ready_snd:TSound = LoadSound(folder$+"startup.wav")			' 
+	get_ready_snd:TSound = LoadSound(folder$+"startup.wav")			'
 
-	player_hit_snd:TSound = LoadSound(folder$+"die1.wav")		' 
+	player_hit_snd:TSound = LoadSound(folder$+"die1.wav")		'
 
-	shot_born_snd:TSound = LoadSound(folder$+"shotborn.wav")			' 
-	shot_hit_wall_snd:TSound = LoadSound(folder$+"shotwall.wav")			' 
+	shot_born_snd:TSound = LoadSound(folder$+"shotborn.wav")			'
+	shot_hit_wall_snd:TSound = LoadSound(folder$+"shotwall.wav")			'
 
-	game_over_snd:TSound = LoadSound(folder$+"gameover.wav")			' 
+	game_over_snd:TSound = LoadSound(folder$+"gameover.wav")			'
 
-	super_bomb_snd:TSound = LoadSound(folder$+"explo1.wav")			' 
+	super_bomb_snd:TSound = LoadSound(folder$+"explo1.wav")			'
 
-	extra_life_snd:TSound = LoadSound(folder$+"brainborn.wav")			' 
+	extra_life_snd:TSound = LoadSound(folder$+"brainborn.wav")			'
 
-	extra_bomb_snd:TSound = LoadSound(folder$+"buzz2.wav")			' 
+	extra_bomb_snd:TSound = LoadSound(folder$+"buzz2.wav")			'
 
-	multiplier_increase_snd:TSound = LoadSound(folder$+"bonus2.wav")		' 
-	bonus_born_snd:TSound = LoadSound(folder$+"bonusborn.wav")		' 
+	multiplier_increase_snd:TSound = LoadSound(folder$+"bonus2.wav")		'
+	bonus_born_snd:TSound = LoadSound(folder$+"bonusborn.wav")		'
 	high_score_snd:TSound = LoadSound(folder$+"bonus1.wav")		' reused
 
-	quarkhitsound:TSound = LoadSound(folder$+"quarkhit.wav")		' 
-	quarkhit2sound:TSound = LoadSound(folder$+"quarkhit2.wav")		' 
+	quarkhitsound:TSound = LoadSound(folder$+"quarkhit.wav")		'
+	quarkhit2sound:TSound = LoadSound(folder$+"quarkhit2.wav")		'
 
-	shieldwarningsnd:TSound = LoadSound(folder$+"shieldwarning.wav")		' 
+	shieldwarningsnd:TSound = LoadSound(folder$+"shieldwarning.wav")		'
 
 End Function
 
@@ -209,15 +209,15 @@ End Function
 Function PlaySound2:TChannel(snd:TSound, freq# = 1, pan#=0, vol# = 1)
 
 	Local ch:TChannel = Null
-	
+
 	If sfxvol > 0 And snd <> Null
 		ch=CueSound(snd)
 		If freq <> 1
 			SetChannelRate(ch,freq)
 		EndIf
-		SetChannelPan ch, pan		
+		SetChannelPan ch, pan
 		SetChannelVolume ch,sfxvol*vol
-		ResumeChannel ch	
+		ResumeChannel ch
 	EndIf
 	Return ch
 
@@ -228,7 +228,7 @@ Function SetPanAndVolume(ch:TChannel, pan#, vol#)
 
 	If ch <> Null
 		If sfxvol > 0
-			SetChannelPan ch, pan		
+			SetChannelPan ch, pan
 			SetChannelVolume ch,sfxvol*vol
 		EndIf
 	EndIf
@@ -239,7 +239,7 @@ End Function
 
 Function AdjustVolume()
 	Local t:Int
-	
+
 	For t = 0 To 7
 		If sunloopchan[t] <> Null
 			SetChannelVolume sunloopchan[t],sfxvol
@@ -251,7 +251,7 @@ End Function
 
 Function StopLoopingSounds()
 	Local t:Int
-	
+
 	For t = 0 To 7
 		If sunloopchan[t] <> Null
 			StopChannel(sunloopchan[t])
@@ -268,18 +268,18 @@ Function StartMusic(song:Int)
 'ogg maybe?
 Rem
 	If musicchannel <> Null Then Return
-	
+
 	Local f$ = ""
 
 	Select song
 		Case 0 'intro
 			f$ = "music/Theme0.ogg"
 		Case 1 'in game
-			f$ = "music/Theme1.ogg"	
+			f$ = "music/Theme1.ogg"
 		Case 2 'hi score
 			f$ = "music/Theme2.ogg"
 	End Select
-		
+
 	musicchannel = CueSound(LoadSound(f$))
 	SetChannelVolume(musicchannel,musicvol)
 	ResumeChannel(musicchannel)
@@ -287,19 +287,19 @@ EndRem
 
 ?Win32
 	If musicchannel <> 0 Then Return
-	
+
 	Local f$ = ""
 
 	Select song
 		Case 0 'intro
 			f$ = "music/Theme0.it"
 		Case 1 'in game
-			f$ = "music/Theme1.it"	
+			f$ = "music/Theme1.it"
 		Case 2 'hi score
 			f$ = "music/Theme2.it"
 	End Select
-		
-	BASS_Free()	
+
+	BASS_Free()
 	Local dev:Int = BASS_Init(1,44100,0,0,0)
 	If dev <> 0
 		musicchannel = BASS_MusicLoad(False,f$.toCString(),0,0,BASS_SAMPLE_LOOP Or BASS_MUSIC_RAMPS Or BASS_MUSIC_CALCLEN,0)
@@ -310,9 +310,9 @@ EndRem
 
 ?Linux
 
-?	
-	
-			
+?
+
+
 End Function
 
 
@@ -335,7 +335,7 @@ End Rem
 ?
 ?Linux
 
-?	
+?
 
 End Function
 
@@ -356,7 +356,7 @@ End Rem
 ?
 ?Linux
 
-?	
+?
 
 End Function
 

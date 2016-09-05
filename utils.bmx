@@ -21,7 +21,7 @@ Function CycleColours(slow#=10)
 	ElseIf rcol > 255
 		rcol = 255
 		rcoldelta = -Rnd(1,slow)
-	EndIf	
+	EndIf
 	gcol = gcol + gcoldelta/10*slow
 	If gcol < 0
 		gcol = 0
@@ -29,7 +29,7 @@ Function CycleColours(slow#=10)
 	ElseIf gcol > 255
 		gcol = 255
 		gcoldelta = -Rnd(1,slow)
-	EndIf	
+	EndIf
 	bcol = bcol + bcoldelta/10*slow
 	If bcol < 0
 		bcol = 0
@@ -37,7 +37,7 @@ Function CycleColours(slow#=10)
 	ElseIf bcol > 255
 		bcol = 255
 		bcoldelta = -Rnd(1,slow)
-	EndIf	
+	EndIf
 End Function
 
 
@@ -46,7 +46,7 @@ End Function
 Function GetPlayTime$(cnt:Int)
 ' cnt is 20ms each ie 50 cnts = 1 sec
 	Local s$ = ""
-	Local secs:Int = Int(cnt/50) 
+	Local secs:Int = Int(cnt/50)
 	Local minutes:Int = Int(secs/60)
 	Local hours:Int = Int(minutes/60)
 	If hours > 0
@@ -54,7 +54,7 @@ Function GetPlayTime$(cnt:Int)
 		If hours > 1
 			s$:+ "s, "
 		Else
-			s$:+ ", "		
+			s$:+ ", "
 		EndIf
 	EndIf
 	If minutes > 0
@@ -62,23 +62,23 @@ Function GetPlayTime$(cnt:Int)
 		If minutes > 1
 			s$:+ "s, "
 		Else
-			s$:+ ", "		
+			s$:+ ", "
 		EndIf
-	EndIf 
+	EndIf
 	If secs > 0
 		s$:+ (secs Mod 60) + " sec"
 		If secs > 1 Then s$:+ "s"
-	EndIf 
+	EndIf
 	Return s$
 End Function
 
 
 Function FitValueToRange#( InValue#, RangeIn_Start#, RangeIn_End#, RangeOut_Start#, RangeOut_End# )
-	
+
 	Local OldRange# = RangeIn_End# - RangeIn_Start#
-	Local NewRange# = RangeOut_End# - RangeOut_Start#	
-	
-	Local OutValue# = ((InValue#-RangeIn_Start) / OldRange#) * NewRange#	+ RangeOut_Start		
+	Local NewRange# = RangeOut_End# - RangeOut_Start#
+
+	Local OutValue# = ((InValue#-RangeIn_Start) / OldRange#) * NewRange#	+ RangeOut_Start
 
 	Return OutValue#
 
@@ -88,7 +88,7 @@ End Function
 Function DrawCircle(xCenter:Int,yCenter:Int,radius:Int)
 
 	Local p%, x%, y%
-	
+
 	x = 0
 	y = radius
 	Plot xCenter + x, yCenter + y
@@ -146,7 +146,7 @@ End Function
 
 Function RectsOverlap:Int(x1:Int,y1:Int,w1:Int,h1:Int,x2:Int,y2:Int,w2:Int,h2:Int)
 
-	If x1 > x2+w2 
+	If x1 > x2+w2
 		' rec 1 is too far right
 		Return False
 	Else
@@ -155,16 +155,16 @@ Function RectsOverlap:Int(x1:Int,y1:Int,w1:Int,h1:Int,x2:Int,y2:Int,w2:Int,h2:In
 			Return False
 		Else
 			' xs are overlapping - check ys
-			If y1 > y2+h2 
+			If y1 > y2+h2
 				' rec 1 is too far down
 				Return False
 			Else
-				If y1+h1 < y2 
+				If y1+h1 < y2
 					' rec 1 is too far above
 					Return False
 				Else
 					' overlap?
-					Return True				
+					Return True
 				EndIf
 			EndIf
 		EndIf
@@ -177,7 +177,7 @@ End Function
 ' rotate xr,yr around xc,yc
 Function TFormR(xc#,yc#, angle:Int, xr# Var,yr# Var)
 '	xs$ = xc+" "+yc+" "+xr+" "+yr+" "+angle
-'	writedelay(xs$)		
+'	writedelay(xs$)
 	Local x# = (xr-xc)
 	Local y# = (yr-yc)
 	xr = Cos(angle)*x - Sin(angle)*y
@@ -185,21 +185,21 @@ Function TFormR(xc#,yc#, angle:Int, xr# Var,yr# Var)
 	xr = xc+xr
 	yr = yc+yr
 '	xs$ = xc+" "+yc+" "+xr+" "+yr+" "+angle
-'	writedelay(xs$)		
+'	writedelay(xs$)
 End Function
 
 
 
 Function PointInTri:Int(xo#,yo#,x1#,y1#,x2#,y2#,x3#,y3#)
 	Local c:Int = True ' point is inside 64 pixels from nme7 - is it in the force field?
-	If  (  (  (y1 <= yo) And (yo < y2)  )  Or  (  (y2 <= yo) And (yo < y1)  )  )   
+	If  (  (  (y1 <= yo) And (yo < y2)  )  Or  (  (y2 <= yo) And (yo < y1)  )  )
 		If (y2 - y1) <> 0
 			If (xo < (x2 - x1) * (yo - y1) / (y2 - y1) + x1)
 				c = Not c
 			EndIf
 		EndIf
 	EndIf
-	If  (  (  (y1 <= yo) And (yo < y3)  )  Or  (  (y3 <= yo) And (yo < y3)  )  )   
+	If  (  (  (y1 <= yo) And (yo < y3)  )  Or  (  (y3 <= yo) And (yo < y3)  )  )
 		If (y2 - y1) <> 0
 			If (xo < (x3 - x1) * (yo - y1) / (y3 - y1) + x1)
 				c = Not c
@@ -212,12 +212,12 @@ End Function
 
 
 ' not used
-'Function IsInTriangle:Int( px#,py#, ax#,ay#,bx#,by#,cx#,cy# ) 
+'Function IsInTriangle:Int( px#,py#, ax#,ay#,bx#,by#,cx#,cy# )
 
 '	Local bc#,ca#,ab#,ap#,bp#,cp#,abc#
 
-'	bc# = bx*cy - by*cx 
-'	ca# = cx*ay - cy*ax 
+'	bc# = bx*cy - by*cx
+'	ca# = cx*ay - cy*ax
 '	ab# = ax*by - ay*bx
 '	ap# = ax*py - ay*px
 '	bp# = bx*py - by*px
@@ -231,26 +231,26 @@ End Function
 Function PointToPointDist#(x1#,y1#,x2#,y2#)
 	Local dx# = x1-x2
 	Local dy# = y1-y2
-	
+
 	Return Sqr(dx*dx + dy*dy)
 
 End Function
 
 
 Function LineCollide2#(x1#,y1#,x2#,y2#, px#,py#,r:Int)
-	
+
 	If x1 = x2 And y1 = y2
 		If PointToPointDist(px,py,x1,y1) <= r Then Return True Else Return False
 	EndIf
-	
+
 	Local sx# = x2-x1
 	Local sy# = y2-y1
-	
+
 	Local q# = ((px-x1) * (x2-x1) + (py - y1) * (y2-y1)) / (sx*sx + sy*sy)
-	
+
 	If q < 0.0 Then q = 0.0
 	If q > 1.0 Then q = 1.0
-	
+
 	If PointToPointDist(px,py,(1-q)*x1+q*x2,(1-q)*y1 + q*y2) <= r Then Return True Else Return False
 End Function
 
@@ -259,10 +259,10 @@ End Function
 Function TurnToFace:Int(x#,y#, dx#, dy#, plx#, ply#)
 
 	Local angle1#, angle2#, ret:Int
-	
+
 	angle1 = ATan2(ply-y,plx-x)
 	angle2 = ATan2(dy,dx)
-	
+
 	ret = angle1-angle2
 	If ret >= 180
 		ret = -(360 - ret)
@@ -273,7 +273,7 @@ Function TurnToFace:Int(x#,y#, dx#, dy#, plx#, ply#)
 	EndIf
 
 	If Abs(ret) < 6 Then ret = 0
-	
+
     Return ret
 
 End Function

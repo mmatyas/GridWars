@@ -75,6 +75,6 @@ Global COL_TRAIL_R:Int = 240
 Global COL_TRAIL_G:Int = 240
 Global COL_TRAIL_B:Int = 100
 
-' particle colours	
-' generator colours	
+' particle colours
+' generator colours
 ' bonds (orange to green)

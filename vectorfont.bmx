@@ -1,4 +1,4 @@
-Strict 
+Strict
 
 Import BRL.Retro
 
@@ -11,7 +11,7 @@ Global letters:bbdigit[128,8]
 SetUpVectorFont()
 
 
-Rem 
+Rem
 Test()
 Function Test()
 
@@ -21,7 +21,7 @@ Function Test()
 	Local sc# = 3.0
 	Local dir = 1
 
-	While Not KeyHit(key_escape) 
+	While Not KeyHit(key_escape)
 
 	Cls
 	sc = sc + .1*dir
@@ -33,7 +33,7 @@ Function Test()
 	DrawString("`abcdefghijklmno",400-sc*40,300+sc*10,sc)
 	DrawString("pqrstuvwxyz{|}~~" ,400-sc*40,325+sc*15,sc)
 	Flip
-	
+
 	Delay 16+sc*5
 	Wend
 
@@ -48,13 +48,13 @@ End Rem
 Function SetUpVectorFont()
 
 	RestoreData letterdata
-	
+
 	Local np,t,s
-	
+
 	For t = 0 To 127
 		letterlen[t] = -1
 	Next
-	
+
 	For t = 32 To 127
 		ReadData np	'number of lines in letter (max 6)  x1,y1, x2,y2
 		letterlen[t] = np-1
@@ -75,7 +75,7 @@ Function DrawDigit(d,xd,yd,sc#)
 '		If letterlen[d] > -1
 			For t = 0 To letterlen[d]
 				DrawLine letters[d,t].x1*sc+xd,letters[d,t].y1*sc+yd,letters[d,t].x2*sc+xd,letters[d,t].y2*sc+yd
-			Next	
+			Next
 '		EndIf
 '	EndIf
 End Function
@@ -83,7 +83,7 @@ End Function
 
 Function DrawString(st$,xd,yd,sc#)
 	Local s,d,ln,t
-	
+
 	ln = Len(st$)
 	For s = 0 To ln-1
 		d = Asc(Mid$(st$,s+1,1))
@@ -91,7 +91,7 @@ Function DrawString(st$,xd,yd,sc#)
 '			If letterlen[d] > -1
 				For t = 0 To letterlen[d]
 					DrawLine letters[d,t].x1*sc+xd+sc*5*s,letters[d,t].y1*sc+yd,letters[d,t].x2*sc+xd+sc*5*s,letters[d,t].y2*sc+yd
-				Next	
+				Next
 '			EndIf
 '		EndIf
 	Next
@@ -223,7 +223,7 @@ DefData	2,	0,0, 4,6,	0,6, 4,0
 DefData	3,	0,0, 2,3,	2,3, 4,0,	2,3, 2,6
 ' Z
 DefData	3,	0,0, 4,0,	4,0, 0,6,	0,6, 4,6
-' [ 
+' [
 DefData	3,	3,0, 1,0, 	1,0, 1,6,   1,6, 3,6
 ' \
 DefData	1,	0,0, 4,6
@@ -293,7 +293,7 @@ DefData	4,	3,0, 2,0, 	2,0, 2,6,   2,6, 3,6,   1,3, 2,3
 DefData	1,	2,0, 2,6
 ' }
 DefData	4,	1,0, 2,0,	2,0, 2,6,	2,6, 1,6,   2,3, 3,3
-' ~  (126) 
+' ~  (126)
 DefData	5,	0,3, 0,1,	0,1, 2,1,	2,1, 2,3,   2,3, 4,3,   4,3, 4,1
 
 ' <-

@@ -15,7 +15,7 @@ RiK	- thanks for coding suggestions and all the Mac builds
 svrman  - thanks for gfx sets
 PVB	- thanks for the download space!
 
-Everyone else @ yakyak & blitzbasic 
+Everyone else @ yakyak & blitzbasic
 	- thanks to all that contributed critiques & suggestions.
 
 Always open for more comments and suggestions.
@@ -86,7 +86,7 @@ Building using BMax:
 Compile grid.bmx (BlitzMax - www.blitzbasic.com)
 Should work fine on PC, Mac
 Linux version untested.
- 
+
 
 
 
@@ -120,7 +120,7 @@ Dual Analog / Mouse / Joypad / Keyboard / Hybrid
 [Joypad Down]
 [Joypad Option]
 [Joypad Bomb]
-0-15 
+0-15
 
 
 [Autofire]
@@ -175,7 +175,7 @@ Ascii codes
 
 
 [Scroll]
-0 (Off) / 1 (On) 
+0 (Off) / 1 (On)
 
 
 [Playfield Width]
@@ -239,24 +239,24 @@ History:
 		- move & shrink X Multiplier display
 		- change multiplier amounts
 		- reduce blackhole 'harvesting' points
-		
+
 - Apr 03 5.3
 		- handle fuzzy numbers from digital joy values
 		- warning sound when shield going out
 
 - Mar 28 5.2
 		- fix typo in joystick fire deadzone
-		
+
 - Mar 14 5.1
 		- fix gfxset save/load
 		- build with BMax 1.18 (minor changes to BASS interface)
-		- added 'sound set' - user or default 
+		- added 'sound set' - user or default
 		- place your own sounds in 'sounds/user' folder
-		
+
 
 - Mar 13 5.0
-		- slightly longer snakes 
-		- MAX particles set to 50K 
+		- slightly longer snakes
+		- MAX particles set to 50K
 		- MAX stars set to 10K
 		- particle gravity changes
 		- blackhole only pull when active
@@ -273,7 +273,7 @@ History:
 		- bigger player explosion
 		- grid modifications
 		- adjust spawn again (prevent them appearing too close)
-					
+
 - Mar 4  4.7
 		- menu linewidth fixes
 		- grid effect extend to right and lower edges
@@ -286,7 +286,7 @@ History:
 
 - Feb 28 4.5
 		- linux buildable
-		- check 32/24/16 depth for gfx 
+		- check 32/24/16 depth for gfx
 		- modify particle orbit on title
 		- P-Key during score to show settings string
 		- fixed hybrid drift
@@ -308,12 +308,12 @@ History:
 		- added back in the code from Feb 16 3.2 (powersave mode disable)
 		and rebuilt modules - seems to work here - needs testing
 		- fuseball's modified deadzone zeroing
-		
+
 - Feb 26 4.2
 		- taumel's enhanced particle glow
 		- grid pattern organize
 		- grid, stars, particle, colours added to video menu
-		
+
 
 - Feb 24 4.1
 		- fix hiscore entry with joypad
@@ -342,14 +342,14 @@ History:
 		- added nobloom/solid gfx from svrman
 		- increased grid dimensions for max resolutions / 4
 		- moved the automatic 180 scaling out to config
-		- added taumel's new grid patterns 
-		
+		- added taumel's new grid patterns
+
 - Feb 20 3.7
 		- removed thecall to GetGfxModes() which was crashing
 		on many PCs - reverted back to fixed list of resolutions
 		(If I'm missing any common ones, let me know)
 		- reduced points powerup value to 2000
-		
+
 - Feb 19 3.6
 		- scale menus based on screen res
 		- separated the playfield list from screen size list
@@ -360,35 +360,35 @@ History:
 		- menu mouse stuff
 		- new hybrid mode changes
 		- sun debris born with smaller freeze time
-		- all available screen resolutions	
+		- all available screen resolutions
 
 - Feb 17 3.4
 		- some grid optimizations from taumel
 		- removed 60Hz from monitor check
 		- added mouse input to options menus
-				
+
 
 - Feb 17 V3.3
 		- fix free man cap to 9 not 8
 		- speed adjustments all around
 		- gravity effect visuals
 		- added this readme file
-				
+
 - Feb 16 V3.2
 		- separate snake head/tail gfx
 		- another particle effect
 		- low/med/high graphics selection
 		- added 1280X800
 		- added the following to   glgraphics.win32.c  at line 84
-		
+
 /* added Feb 16, 2006 - MI start */
-/* prevent screensaver and powersave coming 
-   on during fullscreen with joy input only */		
+/* prevent screensaver and powersave coming
+   on during fullscreen with joy input only */
 	case WM_SYSCOMMAND:
 		if (wp==SC_SCREENSAVE) return 1;
 		if (wp==SC_MONITORPOWER) return 1;
-		break;		
-/* added Feb 16, 2006 - MI end */		
+		break;
+/* added Feb 16, 2006 - MI end */
 
 Update: Trying this instead
 
@@ -403,12 +403,12 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- check if gfx setting available before trying
 		- if a game setting change ends game - enter score in correct table
 
-				
-		
+
+
 - Feb 15 3.1
 		- fixed missing range check in SafeXY
 		- added 1920X1200 screen/playfield sizes
-		- parallax star brightness 
+		- parallax star brightness
 		- removed TAB quick-exit
 
 - Feb 14 3.0
@@ -416,13 +416,13 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- fixes to player/bomb display
 		- bomb/player cap at 9
 		- sped up medium difficulty
-		
+
 - Feb 14 2.9
 		- biger/flashier mouse target
 		- reduced shot png to 32X32
 		- F7 toggles debug
 		- Full grid - on/off
-		
+
 - Feb 14 2.8
 		- enhanced bloom gfx (Tamuel)
 		- bouncy shots
@@ -438,7 +438,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- ESC in menus
 		- menu alignments
 		- move mouse to 0,0 to keep screen saver away?
-		
+
 - Feb 12 2.6
 		- fixes to size stuff
 		- easy/med/hard fixes (xtra lives, bombs, shot#)
@@ -447,7 +447,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- #, letter key entry for high scores
 		- particle gravity (F5 on/off)
 		- particle count (100-10000)
-		- particle life (20-200) 
+		- particle life (20-200)
 		- game reset confirm
 
 - Feb 11 2.5
@@ -464,10 +464,10 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 - Feb 10 2.4
 		- sound pan
 		- multiplier amounts changed
-		- more player pull 
+		- more player pull
 		- blackhole bonus score changes
-		
-		
+
+
 - Feb 9  2.3
 		- increase alpha of points
 		- increase names to 8 characters, allow 32-126
@@ -476,7 +476,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- adjust scroll box even smaller
 		- bonus player and bombs awarded as powerups
 		- default move keys WASD
-		grid styles (F3 cycles through)  
+		grid styles (F3 cycles through)
 		0 = dots, 			1 = rainbow dots
 		2 = minimal lines,	3 = rainbow minimal lines
 		4 = max lines, 		5 = rainbow max lines
@@ -489,8 +489,8 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- fireworks tweaks
 		- F4 toggles stars on/off
 		- cube woble adjustments
-		
-- Feb 9  2.2 
+
+- Feb 9  2.2
 		- alpha fixes
 		- message display stuff
 		- fine tune minimal grid display
@@ -531,7 +531,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- powerup birth pokes grid
 		- mouse buttons assignable
 		- delay time fixed in all routines
-		
+
 - Feb 2   1.6b
 		- fixed dual config screen stuff
 
@@ -540,7 +540,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- changed size of whitestar to 49X49
 		to avoid scaling it each time
 		- snakes form from 1 spot
-		- cycle colours grid/line - F3 
+		- cycle colours grid/line - F3
 		(rainbow dots/rainbow lines/fixed dots/fixed lines)
 		- grid colour and opacity in config -opacity means rainbow!
 		- sun repels shots
@@ -553,8 +553,8 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- mouse sensitivity
 		- can press option during get ready
 		- moved autofire to Game settings
-		
-		
+
+
 - Jan 31  1.5
 		- added axis12,13,14,15
 		- more push to triangles when shot
@@ -597,14 +597,14 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- bonded triangles pushed by shots
 
 - Jan 23
-		- improved grid effects 
+		- improved grid effects
 		- powerup gfx changes (thx svrman)
 		- powerup birth timing changes (po*mult*mult)
 		- New circle gfx (thx svrman)
 		- shots push grid
 		- sun pulls grid
 		- split into multiple files
-		
+
 - Jan 21
 		- shield powerup
 		- control fixes
@@ -621,10 +621,10 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- timed side And back shooters
 		- particle array[1000]- Object reuse, counter
 		- hybrid control  keys-move, mouse aim/fire
-		
+
 - Jan 18
 		- re-arrange sfx load stuff, cleanup
-				
+
 - Jan 17
 		- prelim keyboard/mouse/joypad controls
 		- red sun behaviour changes (blackhole)
@@ -634,7 +634,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 - Jan 16
 		- deadzone (centering) for each axis
 		- tweaks to grid
-		
+
 - Jan 14/15
 		- generators flash when birthing
 		- fixed up various generator images
@@ -644,7 +644,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- bonus destruct & mutate
 		- speed fixes various enemies
 		- colour changes
-		
+
 - Jan 13b
 		- changes to particles
 		- save/load sfx,music settings
@@ -655,7 +655,7 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- fancy title
 		- powerup changes
 		- button check fixes
-		
+
 - Jan 12
 		- sfx for clone
 		- added scaling to controllers
@@ -664,22 +664,22 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- title screen
 		- hi score table
 		- some error checking on the config file
-		
+
 - Jan 11
-		- controller setttings 
+		- controller setttings
 		(based on code from archives at BlitzBasic.com by
 		Troy Robinson  aka Pongo - stormwind@yahoo.com)
 
-- Jan 10 
+- Jan 10
 		- snake & clone fixes
 		- save config
 		- spawning changes
-- Jan 9 
+- Jan 9
 		- clone shield
-- Jan 8 
+- Jan 8
 		- evil clone
 		- butterflies
-- Jan 7 
+- Jan 7
 		- snakes added
 - Jan 4
 		- powerups
@@ -706,4 +706,4 @@ SystemParametersInfoW(SPI_SETSCREENSAVEACTIVE, 0, Null, SPIF_SENDWININICHANGE)
 		- player
 		- grid
 		- particles
-				
+

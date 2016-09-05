@@ -1,4 +1,4 @@
-Strict 
+Strict
 
 Import BRL.Random
 Import BRL.FileSystem
@@ -77,7 +77,7 @@ For a = 0 To 1920/4
 	For b = 0 To 1200/4
 		grid[a,b] = New gridpoint
 	Next
-Next	
+Next
 
 Type gfxmode
 	Field w:Int
@@ -130,7 +130,7 @@ Global playfieldsizes[] = ..
 Global numplayfieldsizes:Int = 34   '0-33
 
 DefData "USER",   1024, 768
-DefData "BWMac",  512,  384 
+DefData "BWMac",  512,  384
 DefData "VGA",    640,  480
 DefData "????",   720,  400
 DefData "NTSCDVD",720,  480
@@ -180,9 +180,9 @@ Function GetGfxModes()
 		gfxmodearr[cnt] = g
 	Next
 	' set first entry to what the user has in config
-	gfxmodearr[0].w = screensizew 
+	gfxmodearr[0].w = screensizew
 	gfxmodearr[0].h = screensizeh
-		
+
 End Function
 
 
@@ -192,16 +192,16 @@ Function FindSetting()
 
 	screensize = 0 ' pick first one
 	playsize = 0 ' use the defaul/file settings
-	playfieldsizes[0] = playsizew 
+	playfieldsizes[0] = playsizew
 	playfieldsizes[1] = playsizeh
-	
+
 	For Local t = 0 To numgfxmodes
-		' or find the one that matches file 
+		' or find the one that matches file
 		If gfxmodearr[t].w = screensizew And gfxmodearr[t].h = screensizeh
 			screensize = t
 		EndIf
 	Next
-	
+
 End Function
 
 
@@ -209,32 +209,32 @@ Function SetDimensions()
 
 	SCREENW = gfxmodearr[screensize].w
 	SCREENH = gfxmodearr[screensize].h
-				
+
 	PLAYFIELDW = playfieldsizes[playsize*2]
 	PLAYFIELDH = playfieldsizes[playsize*2+1]
-	
-	screensizew = gfxmodearr[screensize].w 
-	screensizeh = gfxmodearr[screensize].h 
-	
-	playsizew = PLAYFIELDW 
+
+	screensizew = gfxmodearr[screensize].w
+	screensizeh = gfxmodearr[screensize].h
+
+	playsizew = PLAYFIELDW
 	playsizeh = PLAYFIELDH
-		
+
 End Function
 
 
 Function SetUp:Int()
 
 	Local ret:Int = True
-	
+
 	SetDimensions()
 
-	If windowed 
+	If windowed
 		If GraphicsModeExists( SCREENW,SCREENH )
 			Graphics(SCREENW, SCREENH, 0)
 		Else
 			Local fh:TStream = WriteFile("errors.txt")
 			WriteLine(fh,"Can not set graphics mode: Windowed - "+SCREENW+"X"+SCREENH)
-			CloseFile fh 
+			CloseFile fh
 			ret = False
 		EndIf
 	Else
@@ -249,46 +249,46 @@ Function SetUp:Int()
 		If Not sucess
 			Local fh:TStream = WriteFile("errors.txt")
 			WriteLine(fh,"Could not set graphics mode: Fullscreen - "+SCREENW+"X"+SCREENH)
-			CloseFile fh 
-			ret = False 
-		EndIf		
+			CloseFile fh
+			ret = False
+		EndIf
 	EndIf
 
 	If ret = True
 		Select gridsize
 			Case 0
 				GRIDWIDTH = 4
-				GRIDHEIGHT = 4 
+				GRIDHEIGHT = 4
 			Case 1
 				GRIDWIDTH = 8
-				GRIDHEIGHT = 8 
+				GRIDHEIGHT = 8
 			Case 2
 				GRIDWIDTH = 16
-				GRIDHEIGHT = 16 
+				GRIDHEIGHT = 16
 			Case 3
 				GRIDWIDTH = 32
-				GRIDHEIGHT = 32 
-		End Select	
-			
+				GRIDHEIGHT = 32
+		End Select
+
 		NUMGPOINTSW = PLAYFIELDW/GRIDWIDTH
 		NUMGPOINTSH = PLAYFIELDH/GRIDHEIGHT
 		gridpoint.ResetAll()
-	
+
 		LoadImages()
 		If PLAYFIELDW > SCREENW Or PLAYFIELDH > SCREENH Then scroll = True
 '		If PLAYFIELDW <= SCREENW And PLAYFIELDH <= SCREENH Then scroll = False
 		gxoff = 0
 		gyoff = 0
-		
+
 		capturedimg:TImage = CreateImage(SCREENW,SCREENH)
 		SetLineWidth 2
-		glEnable GL_LINE_SMOOTH; glHint GL_LINE_SMOOTH, GL_NICEST	
-		
-		CreateStars() 
+		glEnable GL_LINE_SMOOTH; glHint GL_LINE_SMOOTH, GL_NICEST
+
+		CreateStars()
 	EndIf
-		
+
 	Return ret
-	
+
 End Function
 
 
@@ -297,24 +297,24 @@ Type gridpoint
 
 	Field ox#,oy#
 	Field x#
-	Field y#	
+	Field y#
 	Field dx#,dy#
 '	Field fx#,fy#
-	
+
 	Method Update(xx#,yy#)
-	
-		If Abs(xx-x) > 2 Then dx:+ Sgn(xx-x) 
-		If Abs(yy-y) > 2 Then dy:+ Sgn(yy-y) 
-					
+
+		If Abs(xx-x) > 2 Then dx:+ Sgn(xx-x)
+		If Abs(yy-y) > 2 Then dy:+ Sgn(yy-y)
+
 		If Abs(ox-x) > 1
 			x = x + Sgn(ox-x)
-			dx:+ Sgn(ox-x)/2 	
+			dx:+ Sgn(ox-x)/2
 		Else
 			x = ox
 		EndIf
 		If Abs(oy-y) > 1
 			y = y + Sgn(oy-y)
-			dy:+ Sgn(oy-y)/2 
+			dy:+ Sgn(oy-y)/2
 		Else
 			y = oy
 		EndIf
@@ -324,13 +324,13 @@ Type gridpoint
 
 		x = x + dx
 		y = y + dy
-			
+
 	End Method
-	
-	
+
+
 	Function ResetAll()
 		Local a:Int,b:Int
-		
+
 		For a = 0 To NUMGPOINTSW
 			For b = 0 To NUMGPOINTSH
 				grid[a,b].ox = a*GRIDWIDTH
@@ -341,7 +341,7 @@ Type gridpoint
 				grid[a,b].dy = 0
 			Next
 		Next
-	End Function	
+	End Function
 
 	Method disrupt(xx#,yy#)
 			If Abs(xx) > 8 Then xx = xx/16
@@ -355,7 +355,7 @@ Type gridpoint
 			EndIf
 '		EndIf
 	End Method
-	
+
 	Function Pull(x1#,y1#, sz:Int = 4,amnt#=4)
 
 		Local a:Int = x1/GRIDWIDTH
@@ -366,7 +366,7 @@ Type gridpoint
 					If a+xx =< NUMGPOINTSW'-2
 						If b+yy > 0
 							If b+yy =< NUMGPOINTSH'-2
-								If xx*xx + yy*yy < sz*sz							
+								If xx*xx + yy*yy < sz*sz
 									Local diffx# = grid[a+xx,b+yy].x-x1
 									Local diffy# = grid[a+xx,b+yy].y-y1
 									Local dist# = Sqr(diffx*diffx+diffy*diffy)
@@ -384,13 +384,13 @@ Type gridpoint
 					EndIf
 				EndIf
 			Next
-		Next	
-	
+		Next
+
 	End Function
 
 
 	Function Push(x1#,y1#, sz:Int = 4,amnt#=1)
-	
+
 		Local a:Int = (x1/GRIDWIDTH)
 		Local b:Int = (y1/GRIDHEIGHT)
 		For Local xx:Int = -sz To sz
@@ -403,14 +403,14 @@ Type gridpoint
 								Local diffx# = grid[a+xx,b+yy].ox-x1
 								Local diffy# = grid[a+xx,b+yy].oy-y1
 								Local diffxo# = grid[a+xx,b+yy].ox-grid[a+xx,b+yy].x
-								Local diffyo# = grid[a+xx,b+yy].oy-grid[a+xx,b+yy].y								
+								Local diffyo# = grid[a+xx,b+yy].oy-grid[a+xx,b+yy].y
 								Local dist# = diffy*diffy+diffx*diffx
 								Local disto# = diffyo*diffyo+diffxo*diffxo
 								If dist > 1 And disto < 400
 									If dist < 50*50
 										grid[a+xx,b+yy].dx:+ diffx*amnt '/dist*amnt
 										grid[a+xx,b+yy].dy:+ diffy*amnt '/dist*amnt
-									EndIf										
+									EndIf
 								EndIf
 							EndIf
 						EndIf
@@ -418,13 +418,13 @@ Type gridpoint
 				'EndIf
 				EndIf
 			Next
-		Next	
-	
+		Next
+
 	End Function
 
-		
+
 	Function UpdateGrid()
-	
+
 		For Local a:Int = 1 To NUMGPOINTSW-1
 			For Local b:Int = 1 To NUMGPOINTSH-1
 				Local xx# = 0
@@ -433,21 +433,21 @@ Type gridpoint
 				xx:+ grid[a,b+1].x
 				xx:+ grid[a+1,b].x
 				xx = xx / 4
-	
+
 				Local yy# = 0
 				yy:+ grid[a-1,b].y
 				yy:+ grid[a,b-1].y
 				yy:+ grid[a,b+1].y
 				yy:+ grid[a+1,b].y
 				yy = yy / 4
-				
+
 				grid[a,b].update(xx,yy)
-				
+
 			Next
 		Next
 	End Function
-	
-	' evil!	
+
+	' evil!
 	Function BombShockwave(x:Int,y:Int)
 		Local a:Int = x/GRIDWIDTH
 		Local b:Int = y/GRIDHEIGHT
@@ -465,10 +465,10 @@ Type gridpoint
 				EndIf
 				EndIf
 			Next
-		Next	
+		Next
 	End Function
-	' /evil	
-	
+	' /evil
+
 	Function Shockwave(x:Int,y:Int)
 		Local a:Int = x/GRIDWIDTH
 		Local b:Int = y/GRIDHEIGHT
@@ -479,16 +479,16 @@ Type gridpoint
 					If a+xx =< NUMGPOINTSW'-1
 						If b+yy > 0
 							If b + yy =< NUMGPOINTSH'-1
-								grid[a+xx,b+yy].disrupt(4*(grid[a+xx,b+yy].x-x),4*(grid[a+xx,b+yy].y-y))								
+								grid[a+xx,b+yy].disrupt(4*(grid[a+xx,b+yy].x-x),4*(grid[a+xx,b+yy].y-y))
 							EndIf
 						EndIf
 					EndIf
 				EndIf
 				EndIf
 			Next
-		Next	
+		Next
 	End Function
-	
+
 Function DrawGrid(style:Int,small:Int = False)
 
 		If fullgrid
@@ -518,12 +518,12 @@ Function DrawGrid(style:Int,small:Int = False)
 			        SetBlend LIGHTBLEND
 			        DrawGridPoints()
 			Case 1
-			        ' points, rainbow 
+			        ' points, rainbow
 			        SetAlpha Abs(g_opacity)
 			        SetColor rcol,gcol,bcol  'cycled colours
 			        SetBlend LIGHTBLEND
 			        DrawGridPoints()
-			
+
 			Case 2
 			        ' points(bigger), solid
 			        SetAlpha Abs(g_opacity)
@@ -535,8 +535,8 @@ Function DrawGrid(style:Int,small:Int = False)
 			        SetAlpha Abs(g_opacity)
 			        SetColor rcol,gcol,bcol  'cycled colours
 			        SetBlend LIGHTBLEND
-			        DrawGridPointsC(g_opacity)		
-			
+			        DrawGridPointsC(g_opacity)
+
 			Case 4
 			        ' Lines, solid
 			        SetAlpha Abs(g_opacity)
@@ -544,25 +544,25 @@ Function DrawGrid(style:Int,small:Int = False)
 			        SetBlend LIGHTBLEND
 			        DrawGridLines()
 			Case 5
-			        ' Lines, rainbow 
+			        ' Lines, rainbow
 			        SetAlpha Abs(g_opacity)
 			        SetColor rcol,gcol,bcol  'cycled colours
 			        SetBlend LIGHTBLEND
 			        DrawGridLines()
-			
+
 			Case 6
-			        ' line quads, solid 
+			        ' line quads, solid
 			        SetAlpha Abs(g_opacity)
 			        SetColor g_red,g_green,g_blue
 			        SetBlend LIGHTBLEND
 			        DrawGridLines3(g_opacity)
 			Case 7
-			        ' line quads, rainbow 
+			        ' line quads, rainbow
 			        SetAlpha Abs(g_opacity)
 			        SetColor rcol,gcol,bcol  'cycled colours
 			        SetBlend LIGHTBLEND
 			        DrawGridLines3(g_opacity)
-			
+
 			Case 8
 					' dense mesh - solid
 					SetAlpha Abs(g_opacity)
@@ -572,11 +572,11 @@ Function DrawGrid(style:Int,small:Int = False)
 			Case 9
 					' dense mesh - blue
 					SetAlpha Abs(g_opacity)
-					SetColor rcol,gcol,bcol			
+					SetColor rcol,gcol,bcol
 					SetBlend LIGHTBLEND
 					DrawGridLines7()
-			
-			
+
+
 			Case 10
 			        ' draw lines [original,blue,stretch]
 			        SetAlpha Abs(g_opacity)
@@ -601,8 +601,8 @@ Function DrawGrid(style:Int,small:Int = False)
 					SetColor g_red,g_green,g_blue
 					SetBlend LIGHTBLEND
 					DrawGridLines3c()
-			
-			
+
+
 			Case 14
 			        ' solid quads, 1 colour
 			        SetAlpha Abs(g_opacity)
@@ -610,7 +610,7 @@ Function DrawGrid(style:Int,small:Int = False)
 			        SetBlend LIGHTBLEND
 			        DrawGridLines2b()
 			Case 15
-			        ' solid quads, rainbow 
+			        ' solid quads, rainbow
 			        SetAlpha Abs(g_opacity)
 			        SetColor rcol,gcol,bcol  'cycled colours
 			        SetBlend LIGHTBLEND
@@ -632,7 +632,7 @@ Function DrawGrid(style:Int,small:Int = False)
 			        SetAlpha Abs(g_opacity)
 			        SetColor g_red,g_green,g_blue
 			        SetBlend LIGHTBLEND
-			        DrawGridLines8()			
+			        DrawGridLines8()
 			Case 19
 			        ' draw line_strip [vcs like]
 			        SetAlpha Abs(g_opacity)
@@ -642,13 +642,13 @@ Function DrawGrid(style:Int,small:Int = False)
 			Case 20
 			        'no grid
 		End Select
-		
+
 		SetScale 1,1
 		SetAlpha 1
 		SetLineWidth 2
-	
-	End Function	
-	
+
+	End Function
+
 	Function DrawGridPoints()
                Local a:Int,b:Int
                Local boldw:Int
@@ -710,10 +710,10 @@ Function DrawGrid(style:Int,small:Int = False)
 		Local a:Int,b:Int
 		Local boldw:Int
 		Local boldh:Int
-		
+
 		boldw = GRIDHILIGHT-(gwlow Mod GRIDHILIGHT)
 		boldh = GRIDHILIGHT-(ghlow Mod GRIDHILIGHT)
-		
+
 		SetScale 1.5,1.5
 		For a = gwlow + 1 To gwhi - 1
 			For b = ghlow + 1 To ghhi - 1
@@ -725,11 +725,11 @@ Function DrawGrid(style:Int,small:Int = False)
 					alp:+ .25
 				EndIf
 				SetAlpha alp
-				DrawImage particleimg, grid[a , b].x - gxoff , grid[a , b].y - gyoff 
+				DrawImage particleimg, grid[a , b].x - gxoff , grid[a , b].y - gyoff
 			Next
 		Next
 		SetScale 1 , 1
-		
+
 	End Function
 
        Function DrawGridLines()
@@ -880,16 +880,16 @@ Function DrawGrid(style:Int,small:Int = False)
 		Local a:Int,b:Int
 		Local boldw:Int
 		Local boldh:Int
-		
+
 		boldw = GRIDHILIGHT-(gwlow Mod GRIDHILIGHT)
 		boldh = GRIDHILIGHT-(ghlow Mod GRIDHILIGHT)
-		
+
 		SetScale 1,1
 		SetLineWidth 1
 		For a = gwlow To gwhi - 1
 			If (a+boldh) Mod GRIDHILIGHT = 0
-				SetAlpha alpha+.25		
-			Else	
+				SetAlpha alpha+.25
+			Else
 				SetAlpha alpha
 			EndIf
 			glBegin GL_LINE_STRIP
@@ -901,8 +901,8 @@ Function DrawGrid(style:Int,small:Int = False)
 		Next
 		For b = ghlow To ghhi - 1
 			If (b+boldw) Mod GRIDHILIGHT = 0
-				SetAlpha alpha+.25		
-			Else	
+				SetAlpha alpha+.25
+			Else
 				SetAlpha alpha
 			EndIf
 			glBegin GL_LINE_STRIP
@@ -1358,7 +1358,7 @@ Function DrawGrid(style:Int,small:Int = False)
                Next
 
 	End Function
-	
+
        Function DrawGridLines6b(alpha#)
 
                Local a:Int,b:Int
@@ -1414,7 +1414,7 @@ Function DrawGrid(style:Int,small:Int = False)
                Next
 
 	End Function
-	
+
 
        Function DrawGridLines7()
 
@@ -1492,20 +1492,20 @@ Function DrawGrid(style:Int,small:Int = False)
 		SetScale 1,1
 		Local boldw:Int
 		Local boldh:Int
-		
+
 		boldw = 2-(gwlow Mod 2)
 		boldh = 2-(ghlow Mod 2)
-		
+
 '		Local xy#[8]
 '		Local xold:Float=0
 '		Local dif:Float=0
-		
+
 		'Local rgbR:Int=95,rgbG:Int=23,rgbB:Int=23
 '		Local rgbR:Int=104,rgbG:Int=26,rgbB:Int=23
 '		Local rgbfR:Float= Float(rgbR/256),rgbfG:Float= Float(rgbG/256),rgbfB:Float= Float(rgbB/256)
-		
+
 		'glEnable GL_LINE_SMOOTH; glHint GL_LINE_SMOOTH, GL_NICEST
-		
+
 '		SetAlpha 1
 '		SetColor rgbR,rgbG,rgbB
 		glLineWidth(2)
@@ -1580,7 +1580,7 @@ Function DrawGrid(style:Int,small:Int = False)
 				y:+1
 			Next
 			glEnd
-		Next		
+		Next
 	End Function
 
 
@@ -1631,8 +1631,8 @@ Function DrawGrid(style:Int,small:Int = False)
                        Next
                Next
 
-       End Function	
-		
+       End Function
+
 EndType
 
 
@@ -1645,7 +1645,7 @@ Type part
 
 	Field x#,y#,dx#,dy#,r:Int,g:Int,b:Int
 	Field active:Int
-	
+
 	Function CreateAll()
 		Local t:Int
 		For t = 0 To MAXPARTICLES-1
@@ -1658,17 +1658,17 @@ Type part
 			partarray[t].active = 0
 			partarray[t].dx = 0
 			partarray[t].dy = 0
-			Part_list.addlast( partarray[t] )				
+			Part_list.addlast( partarray[t] )
 		Next
 		slotcount = 0
-	End Function	
+	End Function
 
-	Function Create( x#, y# ,typ:Int, r:Int,g:Int,b:Int, rot:Float = 0, sz:Int = 1)	
+	Function Create( x#, y# ,typ:Int, r:Int,g:Int,b:Int, rot:Float = 0, sz:Int = 1)
 '	Function Create( x#, y# ,typ:Int, r:Int,g:Int,b:Int, rot:Int = 0, sz:Int = 1)
 			Local p:Part
 			Local flag:Int
 			Local dir:Int, mag#
-		
+
 			p:Part = partarray[slotcount]
 			p.x = x
 			p.y = y
@@ -1687,7 +1687,7 @@ Type part
 					mag# = 16
 					p.dx = Cos(rot)*mag
 					p.dy = Sin(rot)*mag
-					p.active = 24					
+					p.active = 24
 				Case 2
 					dir = rot
 					mag# = 8
@@ -1696,7 +1696,7 @@ Type part
 				Case 8
 					' 3 dirs
 					dir = 120*Rand(0,2)+rot
-					mag# = Rnd(3,10)			
+					mag# = Rnd(3,10)
 					p.dx = Cos(dir)*mag
 					p.dy = Sin(dir)*mag
 				Case 3
@@ -1713,7 +1713,7 @@ Type part
 					p.dy = Sin(dir)*mag
 				Case 7
 					' any dir and speed
-					mag# = Rnd(.5,1)			
+					mag# = Rnd(.5,1)
 					p.dx = Cos(rot)*mag
 					p.dy = Sin(rot)*mag
 					' evil!
@@ -1723,17 +1723,17 @@ Type part
 					mag# = Rnd(1,13)
 					p.dx = Cos(dir)*mag
 					p.dy = Sin(dir)*mag
-					' /evil					
+					' /evil
 			End Select
 			p.dx = p.dx*2
-			p.dy = p.dy*2			
+			p.dy = p.dy*2
 			p.x:+ p.dx*sz
-			p.y:+ p.dy*sz		
+			p.y:+ p.dy*sz
 			slotcount:+1
 			If slotcount > numparticles-1 Then slotcount = 0
 	EndFunction
-	
-	
+
+
 	Method UpdateWide()
 		If active > 0
 			x = x + dx
@@ -1746,18 +1746,18 @@ Type part
 				dx = -Abs(dx)
 				x = x + dx*2
 			EndIf
-			If y =< dy 
+			If y =< dy
 				dy = Abs(dy)
-				y = y + dy*2			
+				y = y + dy*2
 			EndIf
 			If y > SCREENH-1-dy
 				dy = -Abs(dy)
-				y = y + dy*2			
+				y = y + dy*2
 			EndIf
 			dx = dx *particledecay
 			dy = dy *particledecay
 			active:-1
-			If active < 20		
+			If active < 20
 				If active < 10
 					r:*.8';If r < 0 Then r = 0
 					g:*.8';If g < 0 Then g = 0
@@ -1765,15 +1765,15 @@ Type part
 				Else
 					r:*.97';If r < 0 Then r = 0
 					g:*.97';If g < 0 Then g = 0
-					b:*.97';If b < 0 Then b = 0				
-				EndIf	
+					b:*.97';If b < 0 Then b = 0
+				EndIf
 			ElseIf active > 200
-				active = 200			
+				active = 200
 			EndIf
 		EndIf
 	End Method
 
-	
+
 	Method Update()
 		If active > 0
 			x = x + dx
@@ -1786,18 +1786,18 @@ Type part
 				dx = -Abs(dx)
 				x = x + dx*2
 			EndIf
-			If y =< dy 
+			If y =< dy
 				dy = Abs(dy)
-				y = y + dy*2			
+				y = y + dy*2
 			EndIf
 			If y > PLAYFIELDH-1-dy
 				dy = -Abs(dy)
-				y = y + dy*2			
+				y = y + dy*2
 			EndIf
 			dx = dx *particledecay
 			dy = dy *particledecay
 			active:-1
-			If active < 20		
+			If active < 20
 				If active < 10
 					r:*.8';If r < 0 Then r = 0
 					g:*.8';If g < 0 Then g = 0
@@ -1805,23 +1805,23 @@ Type part
 				Else
 					r:*.97';If r < 0 Then r = 0
 					g:*.97';If g < 0 Then g = 0
-					b:*.97';If b < 0 Then b = 0				
-				EndIf				
+					b:*.97';If b < 0 Then b = 0
+				EndIf
 			ElseIf active > 200
-				active = 200			
+				active = 200
 			EndIf
 		EndIf
 	End Method
 
-		
+
 	Function DrawParticles()
 		Local p:part
 		Local t:Int
-		
+
 		Select particlestyle
-		
+
 			Case 0
-				SetBlend lightblend		
+				SetBlend lightblend
 				SetScale 2,2
 				SetAlpha 1
 				SetLineWidth 1.0
@@ -1835,12 +1835,12 @@ Type part
 						SetColor rr,gg,bb
 						DrawLine p.x-gxoff,p.y-gyoff,p.x-gxoff+p.dx,p.y-gyoff+p.dy
 					EndIf
-				Next	
+				Next
 				SetAlpha 1
 				SetLineWidth 2.0
-				SetScale 1,1						
+				SetScale 1,1
 			Case 1
-				SetBlend lightblend		
+				SetBlend lightblend
 				SetScale 2,2 '3,3
 				SetAlpha .9
 				SetLineWidth 2
@@ -1854,12 +1854,12 @@ Type part
 						SetColor rr,gg,bb
 						DrawLine p.x-gxoff,p.y-gyoff,p.x-gxoff+p.dx,p.y-gyoff+p.dy
 					EndIf
-				Next	
+				Next
 				SetAlpha 1
 				SetLineWidth 2.0
 				SetScale 1,1
 			Case 2
-				SetBlend lightblend		
+				SetBlend lightblend
 				SetScale .5,.5
 				For t = 0 To numparticles-1
 					p:part = partarray[t]
@@ -1872,20 +1872,20 @@ Type part
 						'SetAlpha .7
 						'DrawImage particleimg,p.x-gxoff,p.y-gyoff
 						SetAlpha 1 '.9
-						DrawImage particleimg,p.x-gxoff+p.dx,p.y-gyoff+p.dy	
+						DrawImage particleimg,p.x-gxoff+p.dx,p.y-gyoff+p.dy
 					EndIf
-				Next	
+				Next
 				SetAlpha 1
-				SetScale 1,1		
+				SetScale 1,1
 			Case 3  'bloom lines
 				Local win:Float,px:Float,py:Float',dx:Float,dy:Float
 				Local rr:Int,gg:Int,bb:Int
 
-				SetBlend lightblend						
+				SetBlend lightblend
 				SetLineWidth 2
 				SetAlpha .8
 				SetTransform 0,2,2
-				
+
 				For t = 0 To numparticles-1
 					p:part = partarray[t]
 					If p.active > 0
@@ -1904,24 +1904,24 @@ Type part
 						gg = p.g*1.25;If gg>255 Then gg = 255
 						bb = p.b*1.25;If bb>255 Then bb = 255
 						SetColor rr,gg,bb
-						
+
 						win=ATan(p.dy/p.dx)
-						px=p.x-gxoff;py=p.y-gyoff						
+						px=p.x-gxoff;py=p.y-gyoff
 						SetAlpha .25
 						SetTransform win,Sqr(p.dx*p.dx+p.dy*p.dy)*.4,1.2
-						DrawImage particleimg,px+p.dx*1.0,py+p.dy*1.0						
+						DrawImage particleimg,px+p.dx*1.0,py+p.dy*1.0
 					EndIf
-				Next				
+				Next
 				SetAlpha 1
 				SetTransform 0,1,1
 				SetLineWidth 2.0
-								
+
 		End Select
-					
+
 	End Function
-	
-	
-	Function UpdateParticles(ww:Int=0)	
+
+
+	Function UpdateParticles(ww:Int=0)
 		Local p:part,t:Int
 		If ww
 			For t = 0 To numparticles-1
@@ -1929,50 +1929,50 @@ Type part
 				If p.active > 0
 					p.UpdateWide()
 				EndIf
-			Next			
+			Next
 		Else
 			For t = 0 To numparticles-1
 				p:part = partarray[t]
 				If p.active > 0
 					p.Update()
 				EndIf
-			Next	
+			Next
 		EndIf
 	End Function
-	
-		
+
+
 	Function CreateFireWorks(style:Int)
 		Local t:Int,x:Int,y:Int,r:Int,g:Int,b:Int
 		r = Rand(0,3)*64
 		g = Rand(0,3)*64
-		b = Rand(0,3)*64	
+		b = Rand(0,3)*64
 		If style = 1
-			If Rand(0,1) 
+			If Rand(0,1)
 				x = Rand(100,SCREENW-100)
 				y = 16
 				If Rand(0,1) Then y = SCREENH-16
 			Else
 				y = Rand(50,SCREENH-50)
 				x = 16
-				If Rand(0,1) Then x = SCREENW-16				
+				If Rand(0,1) Then x = SCREENW-16
 			EndIf
 		ElseIf style = 2
 			x = SCREENW/2
 			y = SCREENH/2
 		Else
 			x = Rand(100,SCREENW-100)
-			y = Rand(50,SCREENH-50)		
+			y = Rand(50,SCREENH-50)
 		EndIf
 		For t = 0 To 63
 			part.Create(x,y,0,r,g,b)
-		Next			
-	End Function	
-	
-	
+		Next
+	End Function
+
+
 	Function ResetAll()
 		Local p:Part
 		Local t:Int
-		
+
 		For t = 0 To MAXPARTICLES-1
 			p:Part = partarray[t]
 			p.x = 0
@@ -2000,65 +2000,65 @@ Type trail
 	Field x#,y#,r:Int,g:Int,b:Int
 	Field dx#,dy#
 	Field active:Int
-	
+
 	Function Create( x#, y# ,r:Int,g:Int,b:Int,dx#,dy#)
 		Local p:trail
 			p:trail = New trail
 			p.x = x
 			p.y = y
 			p.dx = dx*1.5
-			p.dy = dy*1.5			
+			p.dy = dy*1.5
 			p.r = r
 			p.g = g
 			p.b = b
 			p.active = 40
-			trail_list.addfirst( p )	
+			trail_list.addfirst( p )
 	EndFunction
-	
+
 	Method Update()
 		active:-1
-		
-		If active < 28	
+
+		If active < 28
 			r:*.91
 			g:*.88
 			b:*.86
 			x:+dx
 			y:+dy
 			dx:*0.999
-			dy:*0.999		
+			dy:*0.999
 		EndIf
 		If active <= 0 Then trail_LIST.Remove(Self)
-				
+
 	End Method
 
-		
+
 	Function DrawTrail()
-	
+
 		Local p:trail
-		
-		SetBlend lightblend		
+
+		SetBlend lightblend
 		SetScale 2,2
 		SetAlpha .23
 		For p:trail = EachIn trail_list
 			SetColor p.r,p.g,p.b
 			DrawRect p.x-gxoff,p.y-gyoff,1,1   'p.x-gxoff+p.dx,p.y-gyoff+p.dy
-		Next	
+		Next
 		For p:trail = EachIn trail_list
 			SetColor p.r,p.g,p.b
-			DrawImage particleimg,p.x-gxoff,p.y-gyoff	
-		Next	
+			DrawImage particleimg,p.x-gxoff,p.y-gyoff
+		Next
 		SetAlpha 1
 		SetScale 1,1
-			
+
 	End Function
-	
-	Function UpdateTrail()	
+
+	Function UpdateTrail()
 		Local p:trail
 		For p:trail= EachIn trail_list
 			p.Update()
 		Next
 	End Function
-	
+
 End Type
 
 
@@ -2070,25 +2070,25 @@ Function CreateStars()
 		stard[t] = 2+Float(t Mod 8)/4
 	Next
 EndFunction
-			
+
 Function DrawStars()
 
 	If showstars > 0
-		SetBlend lightblend		
+		SetBlend lightblend
 		SetScale 2,2
 		SetAlpha .8
 		SetLineWidth 2.0
 		Local t:Int
 		For t = 0 To showstars
-			SetColor 480/stard[t],480/stard[t],480/stard[t]		
+			SetColor 480/stard[t],480/stard[t],480/stard[t]
 			DrawRect starx[t]-gxoff/stard[t],stary[t]-gyoff/stard[t],1,1
-		Next	
+		Next
 		SetAlpha 1
 		SetScale 1,1
 	EndIf
-				
+
 End Function
-	
+
 
 
 

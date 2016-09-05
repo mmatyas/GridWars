@@ -37,18 +37,18 @@ While Not KeyDown(KEY_ESCAPE)
 		gridpoint.Push(MouseX()+gxoff,MouseY()+gyoff,sz,amnt/4)
 	EndIf
 	If MouseHit(3) Then pat = (pat + 1) Mod 21
-		
+
 	tim = MilliSecs()
-	
-	gridpoint.UpdateGrid()	
-	gridpoint.DrawGrid(pat)	
+
+	gridpoint.UpdateGrid()
+	gridpoint.DrawGrid(pat)
 	SetColor COL_BORDER_R,COL_BORDER_G,COL_BORDER_B
 	SetLineWidth(2.0)
 	DrawLine -gxoff,-gyoff,PLAYFIELDW-1-gxoff,-gyoff
 	DrawLine -gxoff,-gyoff,-gxoff,PLAYFIELDH-1-gyoff
 	DrawLine -gxoff,PLAYFIELDH-1-gyoff,PLAYFIELDW-1-gxoff,PLAYFIELDH-1-gyoff
 	DrawLine PLAYFIELDW-1-gxoff,PLAYFIELDH-1-gyoff,PLAYFIELDW-1-gxoff,-gyoff
-	
+
 	If MouseX() < 100
 		gxoff:-10
 		If gxoff < -100
@@ -72,14 +72,14 @@ While Not KeyDown(KEY_ESCAPE)
 		If gyoff > PLAYFIELDH-768+100
 			gyoff = PLAYFIELDH-768+100
 		EndIf
-	EndIf		
-	
+	EndIf
+
 	Flip
 	tim = MilliSecs() - tim
 	If tim < 20 And tim > 0
 		Delay 20-tim
 	EndIf
-	
+
 Wend
 
-	
+
