@@ -1824,7 +1824,7 @@ End Function
 
 
 
-Function ControllerSettings(showgame:Int)
+Function ControllerSettings:Int(showgame:Int)
 
 	Local xx:Int, yy:Int, cnt:Int
 	Local done:Int = False
