@@ -2903,8 +2903,8 @@ Function DrawConfigStuff()
 		Rect 180,210,FitValueToRange#( JoyYaw(joyport), -180, 180, 0, 150 ),15,1
 		Rect 180,230,FitValueToRange#( JoyHat(joyport), -1, 1, 0, 150 ),15,1
 		Rect 180,250,FitValueToRange#( JoyWheel(joyport), -1, 1, 0, 150 ),15,1
-		Rect 180,270,FitValueToRange#( JoyWhat(joyport,12), -1, 1, 0, 150 ),15,1
-		Rect 180,290,FitValueToRange#( JoyWhat(joyport,13), -1, 1, 0, 150 ),15,1
+'		Rect 180,270,FitValueToRange#( JoyWhat(joyport,12), -1, 1, 0, 150 ),15,1
+'		Rect 180,290,FitValueToRange#( JoyWhat(joyport,13), -1, 1, 0, 150 ),15,1
 
 		SetColor 160,160,160 ' show values of axis
 		DrawText "1.  JoyX()      : " + JoyX(joyport) ,50,50
@@ -2918,8 +2918,8 @@ Function DrawConfigStuff()
 		DrawText "9.  JoyYaw()    : " + JoyYaw(joyport),50,210
 		DrawText "10. JoyHat()    : " + JoyHat(joyport),50,230
 		DrawText "11. JoyWheel()  : " + JoyWheel(joyport),50,250
-		DrawText "12. JoyAxis12()  : " + JoyWhat(joyport,12),50,270
-		DrawText "13. JoyAxis13()  : " + JoyWhat(joyport,13),50,290
+'		DrawText "12. JoyAxis12()  : " + JoyWhat(joyport,12),50,270
+'		DrawText "13. JoyAxis13()  : " + JoyWhat(joyport,13),50,290
 	EndIf
 End Function
 
@@ -3227,10 +3227,10 @@ Function GetJoyAxis:Int(port:Int,sc#)
 		If Abs(JoyRoll(port)) > .5*sc And Abs(JoyRoll(port)) < .9*sc Return 9
 		If Abs(JoyHat(port)) > .5*sc And Abs(JoyHat(port)) < .9*sc Return 10
 		If Abs(JoyWheel(port)) > .5*sc And Abs(JoyWheel(port)) < .9*sc Return 11
-		If Abs(JoyWhat(port,12)) > .5*sc And Abs(JoyWhat(port,12)) < .9*sc Return 12
-		If Abs(JoyWhat(port,13)) > .5*sc And Abs(JoyWhat(port,13)) < .9*sc Return 13
-		If Abs(JoyWhat(port,14)) > .5*sc And Abs(JoyWhat(port,14)) < .9*sc Return 14
-		If Abs(JoyWhat(port,15)) > .5*sc And Abs(JoyWhat(port,15)) < .9*sc Return 15
+'		If Abs(JoyWhat(port,12)) > .5*sc And Abs(JoyWhat(port,12)) < .9*sc Return 12
+'		If Abs(JoyWhat(port,13)) > .5*sc And Abs(JoyWhat(port,13)) < .9*sc Return 13
+'		If Abs(JoyWhat(port,14)) > .5*sc And Abs(JoyWhat(port,14)) < .9*sc Return 14
+'		If Abs(JoyWhat(port,15)) > .5*sc And Abs(JoyWhat(port,15)) < .9*sc Return 15
 
 		If KeyHit(KEY_ESCAPE) Then Return 0
 		count:+1
@@ -3291,10 +3291,10 @@ End Function
 
 
 
-Function JoyWhat#( port:Int=0, axis:Int )
-	SampleJoy port
-	Return joy_axis[port*16+axis]
-End Function
+' Function JoyWhat#( port:Int=0, axis:Int )
+' 	SampleJoy port
+' 	Return joy_axis[port*16+axis]
+' End Function
 
 
 Function GetJoyByAxis#( port:Int, axis:Int, invert:Int=1, sc#, db# )
@@ -3323,14 +3323,14 @@ Function GetJoyByAxis#( port:Int, axis:Int, invert:Int=1, sc#, db# )
 			joy=JoyHat(port)/sc*invert - db
 		Case 10
 			joy=JoyWheel(port)/sc*invert - db
-		Case 11
-			joy=JoyWhat(port,12)/sc*invert - db
-		Case 12
-			joy=JoyWhat(port,13)/sc*invert - db
-		Case 13
-			joy=JoyWhat(port,14)/sc*invert - db
-		Case 14
-			joy=JoyWhat(port,15)/sc*invert - db
+'		Case 11
+'			joy=JoyWhat(port,12)/sc*invert - db
+'		Case 12
+'			joy=JoyWhat(port,13)/sc*invert - db
+'		Case 13
+'			joy=JoyWhat(port,14)/sc*invert - db
+'		Case 14
+'			joy=JoyWhat(port,15)/sc*invert - db
 	End Select
 	Return joy  '/sc * invert)
 End Function
