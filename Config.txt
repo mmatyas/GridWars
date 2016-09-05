@@ -1,0 +1,280 @@
+[Windowed]
+False
+[Control Type]
+Dual Analog
+[Hybrid Config]
+0
+[Joypad Config]
+0
+[Joypad Left]
+0
+[Joypad Up]
+1
+[Joypad Right]
+2
+[Joypad Down]
+3
+[Joypad Option]
+4
+[Joypad Bomb]
+5
+[Autofire]
+1
+[Key Bomb]
+32
+[Key Move Left]
+65
+[Key Move Right]
+68
+[Key Move Up]
+87
+[Key Move Down]
+83
+[Key Fire Left]
+37
+[Key Fire Right]
+39
+[Key Fire Up]
+38
+[Key Fire Down]
+40
+[SFX Volume]
+56
+[Music Volume]
+28
+[Sound Set]
+0
+[Grid Style]
+6
+[Grid Red]
+3
+[Grid Green]
+4
+[Grid Blue]
+255
+[Grid Opacity]
+23
+[Grid Spacing]
+2
+[Full Grid]
+1
+[Gfx Set]
+3
+[Show Stars]
+100
+[Scroll]
+0
+[Playfield Width]
+1024
+[Playfield Height]
+768
+[Screen Width]
+1024
+[Screen Height]
+768
+[Particle Count]
+2200
+[Particle Life]
+64
+[Particle Gravity]
+1
+[Particle Decay]
+0.963999987
+[Particle Style]
+3
+[Mouse Sensitivity]
+55
+[Mouse Fire]
+1
+[Mouse Bomb]
+2
+[Difficulty]
+1
+[Inertia]
+50
+[Used Port]
+0
+[Joy Port]
+0
+[Joy Move X]
+1
+[Joy Move Y]
+2
+[Joy Fire X]
+4
+[Joy Fire Y]
+3
+[Joy Move X Inverted]
+1
+[Joy Move Y Inverted]
+1
+[Joy Fire X Inverted]
+1
+[Joy Fire Y Inverted]
+1
+[Joy Move X Scale]
+1
+[Joy Move Y Scale]
+1
+[Joy Fire X Scale]
+1
+[Joy Fire Y Scale]
+1
+[Joy Move X Center]
+0.000000000
+[Joy Move Y Center]
+0.000000000
+[Joy Fire X Center]
+0.000000000
+[Joy Fire Y Center]
+0.000000000
+[Joy Move X Dead Zone]
+0.0599999987
+[Joy Move Y Dead Zone]
+0.0599999987
+[Joy Fire X Dead Zone]
+0.0599999987
+[Joy Fire Y Dead Zone]
+0.0599999987
+[Joy Option]
+7
+[Joy Bomb]
+6
+[Joy Port]
+1
+[Joy Move X]
+1
+[Joy Move Y]
+2
+[Joy Fire X]
+4
+[Joy Fire Y]
+3
+[Joy Move X Inverted]
+1
+[Joy Move Y Inverted]
+1
+[Joy Fire X Inverted]
+1
+[Joy Fire Y Inverted]
+1
+[Joy Move X Scale]
+1
+[Joy Move Y Scale]
+1
+[Joy Fire X Scale]
+1
+[Joy Fire Y Scale]
+1
+[Joy Move X Center]
+0.000000000
+[Joy Move Y Center]
+0.000000000
+[Joy Fire X Center]
+0.000000000
+[Joy Fire Y Center]
+0.000000000
+[Joy Move X Dead Zone]
+0.000000000
+[Joy Move Y Dead Zone]
+0.000000000
+[Joy Fire X Dead Zone]
+0.000000000
+[Joy Fire Y Dead Zone]
+0.000000000
+[Joy Option]
+5
+[Joy Bomb]
+4
+[Joy Port]
+2
+[Joy Move X]
+1
+[Joy Move Y]
+2
+[Joy Fire X]
+4
+[Joy Fire Y]
+3
+[Joy Move X Inverted]
+1
+[Joy Move Y Inverted]
+1
+[Joy Fire X Inverted]
+1
+[Joy Fire Y Inverted]
+1
+[Joy Move X Scale]
+1
+[Joy Move Y Scale]
+1
+[Joy Fire X Scale]
+1
+[Joy Fire Y Scale]
+1
+[Joy Move X Center]
+0.000000000
+[Joy Move Y Center]
+0.000000000
+[Joy Fire X Center]
+0.000000000
+[Joy Fire Y Center]
+0.000000000
+[Joy Move X Dead Zone]
+0.000000000
+[Joy Move Y Dead Zone]
+0.000000000
+[Joy Fire X Dead Zone]
+0.000000000
+[Joy Fire Y Dead Zone]
+0.000000000
+[Joy Option]
+1
+[Joy Bomb]
+2
+[Joy Port]
+3
+[Joy Move X]
+1
+[Joy Move Y]
+2
+[Joy Fire X]
+4
+[Joy Fire Y]
+3
+[Joy Move X Inverted]
+1
+[Joy Move Y Inverted]
+1
+[Joy Fire X Inverted]
+1
+[Joy Fire Y Inverted]
+1
+[Joy Move X Scale]
+1
+[Joy Move Y Scale]
+1
+[Joy Fire X Scale]
+1
+[Joy Fire Y Scale]
+1
+[Joy Move X Center]
+0.000000000
+[Joy Move Y Center]
+0.000000000
+[Joy Fire X Center]
+0.000000000
+[Joy Fire Y Center]
+0.000000000
+[Joy Move X Dead Zone]
+0.000000000
+[Joy Move Y Dead Zone]
+0.000000000
+[Joy Fire X Dead Zone]
+0.000000000
+[Joy Fire Y Dead Zone]
+0.000000000
+[Joy Option]
+1
+[Joy Bomb]
+2
