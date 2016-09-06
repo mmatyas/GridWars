@@ -23,7 +23,7 @@ Unfortunately, the build system doesn't respect `CC` and `CXX`, and always calls
 - Create a new directory that will hold symlinks to the cross compilers, eg. `armcc`, and enter into it
 - `for f in /usr/bin/arm-linux-gnueabihf-*; do f2=$(basename $f); ln -s $f ./${f2/arm-linux-gnueabihf-/}; done`
 - Install the dependencies of the BMX-NG compiler: `sudo apt-get install libasound2-dev libpulse-dev libxft-dev libxxf86vm-dev`
-- Get the BMX-NG compiler for RPi from here: https://github.com/bmx-ng/bmx-ng/releases
+- Get the BMX-NG compiler for Linux from here: https://github.com/bmx-ng/bmx-ng/releases
 - Extract it to somewhere
 - `cd` into the cloned game repository
 - Build the game like this: `PATH=$SOMEWHERE/armcc:$SOMEWHERE/BlitzMax/bin:$PATH bmk makeapp -t gui -l raspberrypi -g arm -r -w -v gridwars.bmx`
