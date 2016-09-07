@@ -1,0 +1,5 @@
+# build directory
+.bmx/
+
+# binaries
+gridwars*
