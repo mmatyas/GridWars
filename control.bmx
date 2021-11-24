@@ -1,6 +1,9 @@
 SuperStrict
 
 Import PUB.FreeJoy
+Import BRL.Volumes
+Import BRL.FileSystem
+
 Import "sound.bmx"
 Import "gridparttrail.bmx"
 Import "vectorfont.bmx"
@@ -194,13 +197,31 @@ Function DrawTarget(x%,y%,cnt%,sz%=7)
 End Function
 
 
+Function CheckConfDir:Int()
+	Local ft:Int, confdir$
+
+	confdir$=GetUserHomeDir()+"/.config/gridwars"
+	ft = FileType(confdir)
+	if ft = 2
+		Return True
+	Else
+		Local success:Int = CreateDir(confdir, True)
+		If Not success Then
+			info$ = "Config directory creation failed."
+			infotimer = 30*4
+			Return False
+		EndIf
+	EndIf
+
+End Function
 
 Function LoadConfig:Int()
 
-	Local fh:TStream, fn$
+	Local fh:TStream, fn$, hdir$
 	Local pv$, pm$
 
-	fn$ = "Config.txt"
+	hdir$=GetUserHomeDir()
+	fn$ = hdir+"/.config/gridwars/Config.txt"
 	fh = OpenFile(fn$)
 	If fh <> Null
 		While Not Eof(fh)
@@ -429,9 +450,10 @@ End Function
 
 Function SaveConfig:Int()
 
-	Local fh:TStream, fn$
+	Local fh:TStream, fn$, hdir$
 
-	fn$ = "Config.txt"
+	hdir$=GetUserHomeDir()
+	fn$ = hdir+"/.config/gridwars/Config.txt"
 	fh = WriteFile(fn$)
 	If fh <> Null
 		WriteLine (fh,"[Windowed]")
@@ -616,9 +638,10 @@ End Function
 
 Function SaveColours:Int()
 
-	Local fh:TStream, fn$
+	Local fh:TStream, fn$, hdir$
 
-	fn$ = "Colours.txt"
+	hdir$=GetUserHomeDir()
+	fn$ = hdir+"/.config/gridwars/Colours.txt"
 	fh = WriteFile(fn$)
 	If fh <> Null
 		WriteLine(fh,"squares")
@@ -712,10 +735,11 @@ End Function
 
 Function LoadColours:Int()
 
-	Local fh:TStream, fn$
+	Local fh:TStream, fn$, hdir$
 	Local com$
 
-	fn$ = "Colours.txt"
+	hdir$=GetUserHomeDir()
+	fn$ = hdir+"/.config/gridwars/Colours.txt"
 	fh = OpenFile(fn$)
 	If fh <> Null
 		com$ = ReadLine(fh)
