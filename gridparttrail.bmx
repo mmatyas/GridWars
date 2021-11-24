@@ -1,6 +1,6 @@
 Strict
 
-Import BRL.Random
+Import BRL.RandomDefault
 Import BRL.FileSystem
 Import "colordefs.bmx"
 Import "utils.bmx"
